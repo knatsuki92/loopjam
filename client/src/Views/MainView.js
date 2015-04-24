@@ -1,6 +1,7 @@
 define([
   'text!templates/MainViewTemplate.html',
   'Models/AppModel',
+  'Models/NavModel',
   'Views/NavView',
   'Views/AppView',
   'Views/TrackView',
@@ -21,8 +22,9 @@ define([
       // Load Template
       this.$el.html(this.template());
       // attach navBar
-      var navView = new NavView();
       var userTrackModal = Handlebars.compile(UsersTracksTemplate);
+      var navModel = new NavModel();
+      var navView = new NavView({model: navModel});
       this.$el.find('.navBar').html(navView.render().el);
       this.$el.find('.navBar').find('.users-tracks').html(userTrackModal());
 

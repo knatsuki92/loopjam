@@ -9,3 +9,54 @@
       </div>  
     </div>
  </nav>
+   <div class="navbar-inner">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <i class="fa fa-circle-o-notch"></i> Loopjam
+          </a>
+          <div class="users-tracks">
+        </div>
+      <button type="button" class="btn btn-default navbar-btn navbar-right " data-toggle="modal" data-target="#signUp">Sign up</button>
+      <button type="button" class="btn btn-default navbar-btn navbar-right " data-toggle="modal" data-target="#login">Login</button>
+      </div>
+   </div>
+ </nav>
+
+
+ <!-- Modal signup -->
+ <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" class="EmailSignUp form-control" placeholder="Email address" required autofocus>
+                <input type="text" class="UsernameSignUp form-control" placeholder="Username" required>
+                <input type="password" class="PassSignUp form-control" placeholder="Password" required>
+                <button class="signupbtn btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
+            </form><!-- /form -->
+
+        </div>
+   </div>
+ </div>
+
+ <!-- Modal login -->
+ <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <input type="text"  class="UsernameLogin form-control" placeholder="Username" required>
+                <input type="password"  class="PassLogin form-control" placeholder="Password" required>
+                <button class="loginbtn btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
+            </form><!-- /form -->
+
+        </div>
+   </div>
+ </div>
+>>>>>>> In the process of building user login
