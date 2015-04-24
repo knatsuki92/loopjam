@@ -3,11 +3,15 @@ define([
 ], function(template){
   var NavView = Backbone.View.extend({
     initialize: function(){
+      this.model.sessionModel.on('change', function(){
+        // handlng for logging in
+      });
     },
 
     events:{
       "click .signupbtn": "signup",
-      "click .loginbtn": "login"
+      "click .loginbtn": "login",
+      "click .loginbtn": "logout"
     },
 
     template: Handlebars.compile(template),
@@ -28,9 +32,10 @@ define([
         password: password
       }
       this.model.signup(newUser);
+      // this.$el.find('#signUp').modal('toggle');
     },
     login: function(e){
-      e.preventDefault();
+      // e.preventDefault();
       // var email = this.$el.find('.EmailSignUp').val();
       var username = this.$el.find('.UsernameLogin').val();
       var password = this.$el.find('.PassLogin').val();
@@ -40,6 +45,12 @@ define([
         password: password
       }
       this.model.login(user);
+      // this.$el.find('#login').modal('toggle');
+
+    },
+    logout: function(e){
+      // e.preventDefault();
+      this.model.logout();
     }
   });
 

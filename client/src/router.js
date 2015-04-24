@@ -1,10 +1,11 @@
 define([
+  'Models/MainModel',
   'Models/AppModel',
   'Views/AppView',
   'Models/TrackModel',
   'Views/TrackView',
   'Views/MainView'
-], function(AppModel, AppView, TrackModel, TrackView, MainView){
+], function(MainModel, AppModel, AppView, TrackModel, TrackView, MainView){
   var AppRouter = Backbone.Router.extend({
     routes: {
       // Routes
@@ -18,9 +19,10 @@ define([
 
     loadMainView: function(){
       if(!this.mainView){
-        this.mainView = new MainView();
+        this.mainView = new MainView({model: new MainModel()});
         $('body').html(this.mainView.render().el);
       }
+
       this.mainView.renderAppView();
     },
     showTracks: function(){
@@ -28,9 +30,10 @@ define([
     },
     showTrackView: function(id){
       if(!this.mainView){
-        this.mainView = new MainView();
+        this.mainView = new MainView({model: new MainModel()});
         $('body').html(this.mainView.render().el);
       }
+ 
       // Track View page
       // Note: we need to set up ids.
 

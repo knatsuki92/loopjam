@@ -2,10 +2,12 @@ define([
 ], function(){
   var NavModel = Backbone.Model.extend({
     defaults: {
-    
+      isLogged: false,
+      username: 'joe'
     },
 
-    initialize: function(){
+    initialize: function(param){
+      this.sessionModel = param.sessionModel;
       
     },
 
@@ -29,7 +31,24 @@ define([
         data: user,
         success: function(resp){
           console.log(resp);
-        },
+          this.set('isLogged', true);
+          this.set('username', 'joe');
+        }.bind(this),
+        error: function(resp){
+          console.error(resp);
+        }
+      });
+    },
+    logout: function(user){
+      $.ajax({
+        type: "GET",
+        url: "/auth/logout",
+        data: user,
+        success: function(resp){
+          console.log(resp);
+          this.set('isLogged', true);
+          this.set('username', 'joe');
+        }.bind(this),
         error: function(resp){
           console.error(resp);
         }

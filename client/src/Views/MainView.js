@@ -1,12 +1,12 @@
 define([
   'text!templates/MainViewTemplate.html',
+  'Models/MainModel',
   'Models/AppModel',
   'Models/NavModel',
   'Views/NavView',
   'Views/AppView',
   'Views/TrackView',
   'text!templates/UsersTracksViewTemplate.html'
-
 ], function(template, AppModel, NavView, AppView, TrackView, UsersTracksTemplate){
   var MainView = Backbone.View.extend({
 
@@ -21,9 +21,12 @@ define([
     render: function() {
       // Load Template
       this.$el.html(this.template());
+
+      var sessionModel = this.model.sessionModel;
+      var navModel = this.model.navModel;
+
       // attach navBar
       var userTrackModal = Handlebars.compile(UsersTracksTemplate);
-      var navModel = new NavModel();
       var navView = new NavView({model: navModel});
       this.$el.find('.navBar').html(navView.render().el);
       this.$el.find('.navBar').find('.users-tracks').html(userTrackModal());
