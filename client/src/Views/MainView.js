@@ -7,7 +7,7 @@ define([
   'Views/AppView',
   'Views/TrackView',
   'text!templates/UsersTracksViewTemplate.html'
-], function(template, AppModel, NavView, AppView, TrackView, UsersTracksTemplate){
+], function(template, MainModel, AppModel, NavModel, NavView, AppView, TrackView, UsersTracksTemplate){
   var MainView = Backbone.View.extend({
 
     initialize: function(){

@@ -22,7 +22,7 @@ define([
       return this;
     },
     signup: function(e){
-      // e.preventDefault();
+      e.preventDefault();
       var email = this.$el.find('.EmailSignUp').val();
       var username = this.$el.find('.UsernameSignUp').val();
       var password = this.$el.find('.PassSignUp').val();
@@ -31,11 +31,11 @@ define([
         username: username,
         password: password
       }
-      this.model.signup(newUser);
+      this.model.signup(JSON.stringify(newUser));
       // this.$el.find('#signUp').modal('toggle');
     },
     login: function(e){
-      // e.preventDefault();
+      e.preventDefault();
       // var email = this.$el.find('.EmailSignUp').val();
       var username = this.$el.find('.UsernameLogin').val();
       var password = this.$el.find('.PassLogin').val();
@@ -44,7 +44,7 @@ define([
         username: username,
         password: password
       }
-      this.model.login(user);
+      this.model.login(JSON.stringify(user));
       // this.$el.find('#login').modal('toggle');
 
     },

@@ -6,12 +6,12 @@ module.exports = function (router){
 // router.post('/signup',passport.authenticate('signup'),utils.createUser);
 router.post('/signup',passport.authenticate('signup', {
       successRedirect: '#/tracks/new',
-      failureRedirect: '/'
+      failureRedirect: '/#/poop'
 }));
 // router.post('/login', passport.authenticate('local'),utils.login);
 router.post('/login', passport.authenticate('login',  {
       successRedirect: '#/tracks/new',
-      failureRedirect: '/'
+      failureRedirect: '/#/poop'
 }));
 
 router.post('/logout', utils.logout);

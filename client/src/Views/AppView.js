@@ -23,9 +23,9 @@ define([
 
       signup.on('click', function() {
         var d = JSON.stringify({
-            username:'Harry',
-            password: 'Fireboltasdfasdf',
-            email:'123@123.com'
+            username:'test',
+            password: 'test',
+            email:'123e@123.com'
           });
 
         $.ajax({
@@ -42,9 +42,9 @@ define([
 
       login.on('click', function() {
         var d = JSON.stringify({
-            username:'Harry',
-            password: 'Fireboltasdfasdf',
-            email:'123@123.com'
+            username:'test',
+            password: 'test',
+            email:'123e@123.com'
           });
 
         $.ajax({

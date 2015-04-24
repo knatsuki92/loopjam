@@ -5,13 +5,14 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 
 passport.serializeUser(function(user,done){
-  console.log("In passports SerializeUser, about to log out User: ");
+  console.log("In passports SerializeUser, about to serialize User: ");
+  console.log(user);
   done(null,user);
 
 });
 
 passport.deserializeUser(function(user,done){
-  console.log("In passports SerializeUser, about to log out User: ");
+  console.log("In passports deSerializeUser, about to deserialize User: ", user);
   done(null,user);
 });
 
@@ -29,7 +30,7 @@ passport.use('login', new LocalStrategy({
       return done(null, false, {message: 'That user does not exist!'});
     } else if (!utils.isValidPassword(user,password)){
       console.log('Password is invalid! Try a different password');
-      return done(null, user, {message:'Invalid password!'});
+      return done(null, false, {message:'Invalid password!'});
     } else if (user){
       console.log('Login successful! logging you in right now');
       //verify password

@@ -12,32 +12,52 @@ define([
     },
 
     signup: function(newUser){
+      
       $.ajax({
-        type: "POST",
-        url: "/auth/signup",
+        type: 'POST',
+        accept: 'application/json',
+        url: 'auth/signup',
         data: newUser,
-        success: function(resp){
-          console.log(resp);
-        },
-        error: function(resp){
-          console.error(resp);
-        }
-      });
+        contentType:"application/json; charset=utf-8"
+      }).done(function(data) { 
+        console.log('got a reply from server, logging out the data', data);
+        });
+
+      // $.ajax({
+      //   type: "POST",
+      //   url: "/auth/signup",
+      //   data: newUser,
+      //   success: function(resp){
+      //     console.log(resp);
+      //   },
+      //   error: function(resp){
+      //     console.error(resp);
+      //   }
+      // });
     },
     login: function(user){
-      $.ajax({
-        type: "GET",
-        url: "/auth/login",
-        data: user,
-        success: function(resp){
-          console.log(resp);
-          this.set('isLogged', true);
-          this.set('username', 'joe');
-        }.bind(this),
-        error: function(resp){
-          console.error(resp);
-        }
-      });
+     $.ajax({
+       type: 'POST',
+       accept: 'application/json',
+       url: 'auth/login',
+       data: user,
+       contentType:"application/json; charset=utf-8"
+     }).done(function(data) { console.log('got a reply from server, logging out the data', data);
+       });
+
+      // $.ajax({
+      //   type: "GET",
+      //   url: "/auth/login",
+      //   data: user,
+      //   success: function(resp){
+      //     console.log(resp);
+      //     this.set('isLogged', true);
+      //     this.set('username', 'joe');
+      //   }.bind(this),
+      //   error: function(resp){
+      //     console.error(resp);
+      //   }
+      // });
     },
     logout: function(user){
       $.ajax({
