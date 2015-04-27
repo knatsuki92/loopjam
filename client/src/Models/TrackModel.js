@@ -408,7 +408,7 @@ function(LoopNodeCollection, LoopNodeModel){
           if(playOn){        
             osc = context.createOscillator();
             osc.connect(context.destination);      
-            osc.frequency.value = metLowFreq;
+            osc.frequency.value = metHighFreq;
             osc.start(nextNoteTime);
             osc.stop(nextNoteTime + noteLength);
           }   
@@ -421,7 +421,7 @@ function(LoopNodeCollection, LoopNodeModel){
           if(playOn){        
             osc = context.createOscillator();
             osc.connect(context.destination);      
-            osc.frequency.value = metHighFreq;
+            osc.frequency.value = metLowFreq;
             osc.start(nextNoteTime);
             osc.stop(nextNoteTime + noteLength);
           }   
