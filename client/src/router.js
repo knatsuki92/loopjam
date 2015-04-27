@@ -39,7 +39,7 @@ define([
 
     loadBrowserAlertView: function() {
       var BrowserAlertTemplate = this.browserAlertTemplate;
-      $('body').find('.main').html(BrowserAlertTemplate());
+      $('body').html(BrowserAlertTemplate());
     },
 
     loadMainView: function(){
