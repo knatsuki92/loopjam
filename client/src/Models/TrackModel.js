@@ -340,6 +340,12 @@ function(LoopNodeCollection, LoopNodeModel){
           if(this.get('visualiserOn')){
             this.freqAnimationUpdate();
           }
+          if(!this.get('visualiserOn')){
+            var analyser = this.get('analyser');
+            var ctx = this.get('bgFreqCanvasCtx');
+            var canvas = this.get('bgFreqCanvas');
+            ctx.clearRect(0, 0, canvas.width(), canvas.height());
+          }
         }.bind(this));
 
       },
