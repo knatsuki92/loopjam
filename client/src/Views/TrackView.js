@@ -77,7 +77,7 @@ define([
 
 
       this.$el.find('.loopNodeInfoView').html(new LoopNodeInfoView({ model: selectedNode}).render().el);
-      this.$el.find('.loopNodeInfoTitle').effect( "highlight", {color:"grey"}, 1000 );
+      this.$el.find('.loopNodeInfoTitle').effect( "highlight", {color:"orange"}, 1000 );
       
       return this;
     },
