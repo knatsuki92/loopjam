@@ -3,10 +3,10 @@ require.config({
   paths: {
     text: '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min',
     templates: '../templates',
-    base64Binary:'base64-binary',
-    bufferLoader: 'bufferLoader',
-    utilities: 'utilities',
-    recorder: 'recordmp3'
+    base64Binary:'utilities/base64-binary',
+    bufferLoader: 'utilities/bufferLoader',
+    utilities: 'utilities/utilities',
+    recorder: 'utilities/recordmp3'
   }
 });
 

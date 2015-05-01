@@ -2,7 +2,7 @@ define([
 ], 
 function(){ 
 
-  var WORKER_PATH = 'src/recorderWorker.js';
+  var WORKER_PATH = 'src/utilities/recorderWorker.js';
 
   var Recorder = function(source, cfg, track){
     var config = cfg || {};
@@ -73,7 +73,7 @@ function(){
   	//Mp3 conversion
     worker.onmessage = function(e){
       // We move this here to allow multiple mp3 conversion to be allowed at the same time.
-      var encoderWorker = new Worker('src/mp3Worker.js');
+      var encoderWorker = new Worker('src/utilities/mp3Worker.js');
       var portNum = e.data.portNum;
       var blob = e.data.audioBlob;
 	  
