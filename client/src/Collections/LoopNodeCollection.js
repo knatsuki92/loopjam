@@ -1,6 +1,7 @@
 define([
+  'utilities',
   'Models/LoopNodeModel'
-], function(LoopNodeModel){
+], function(util, LoopNodeModel){
 
   var LoopNodeCollection = Backbone.Collection.extend({
     model: LoopNodeModel,
@@ -26,48 +27,11 @@ define([
 
     },
 
-    // events:{
-    //   "hello": function(){
-    //   }
-    // },
-
-    // setCueAnimation: function(){
-
-    //   d3.timer(function(){
-    //     var loopNodes = this.collection;
-    //     var audioCtxTime = this.context.currentTime;
-    //     var bar = calcBar(this.bpm);
-    //     var speed = calcSpeed(bar);
-    //     var tempoAdjustment = this.tempoAdjustment;
-
-    //     // do this for each loopnode
-    //     loopNodes.each(function(loopNode) {
-    //       var delta = audioCtxTime;
-    //       var svg = loopNode.d3Obj.svg;
-    //       var multiplier = loopNode.multiplier;
-
-    //       svg.selectAll(".cue").attr("transform", function(d) {
-    //         // amount to rotate from original (xPos:0, yPos:1) position
-    //         var rotateDeg = (delta * speed - tempoAdjustment) / multiplier;
-
-    //         // animation at 90, 180, 270, and 360 degree
-
-    //         if(rotateDeg % 90 < 20 || rotateDeg % 90 > 80){
-    //           svg.selectAll(".cue").attr("class", "cue darkplanet");
-    //         } else{
-    //           svg.selectAll(".cue").attr("class", "cue");
-    //         }
-    //         return "rotate(" + rotateDeg  +")";
-    //       });
-
-    //     });
-    //   }.bind(this));
-    // },
 
     updateAnimationPosition: function(tempo, tempoAdjustment, currentTime){
       // Each(updates position)
-      var bar = calcBar(tempo);
-      var angularSpeed = calcSpeed(bar);
+      var bar = util.calcBar(tempo);
+      var angularSpeed = util.calcSpeed(bar);
 
       // do this for each loopnode
       this.each(function(loopNode){
@@ -78,7 +42,6 @@ define([
         svg.selectAll(".cue").attr("transform", function(d) {
           // amount to rotate from original (xPos:0, yPos:1) position
           var rotateDeg = (delta * angularSpeed - tempoAdjustment) / multiplier;
-          debugger;
           // animation at 90, 180, 270, and 360 degree
 
           if(rotateDeg % 90 < 20 || rotateDeg % 90 > 80){

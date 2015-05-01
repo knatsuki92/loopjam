@@ -1,9 +1,10 @@
 define([
  'bufferLoader',
+ 'utilities',
  'Collections/LoopNodeCollection',
  'Models/LoopNodeModel'
 ], 
-function(BufferLoader, LoopNodeCollection, LoopNodeModel){ 
+function(BufferLoader, util, LoopNodeCollection, LoopNodeModel){ 
   var TrackModel = Backbone.Model.extend({
       defaults: {
       context: null,
@@ -200,14 +201,14 @@ function(BufferLoader, LoopNodeCollection, LoopNodeModel){
         // Grab the amount of time a bar takes to complete.
         var tempo = this.get('tempo');
         var multiplier = currentLoop.get('multiplier');
-        var barTime = multiplier * calcBar(tempo);
+        var barTime = multiplier * util.calcBar(tempo);
         var currentTime = this.get('context').currentTime;
         var tempoAdjustment = this.get('tempoAdjustment');
         
         currentLoop.set('speed', barTime);
         currentLoop.set('recordedAtBpm', tempo);
 
-        var barTimePlayed = (currentTime - tempoAdjustment / 360 * calcBar(tempo))  % barTime;
+        var barTimePlayed = (currentTime - tempoAdjustment / 360 * util.calcBar(tempo))  % barTime;
 
         var delay = barTime - barTimePlayed;
 
@@ -361,8 +362,8 @@ function(BufferLoader, LoopNodeCollection, LoopNodeModel){
 
         var context = this.get('context'); 
         var currentTime = context.currentTime;
-        var bar = calcBar(this.get('tempo'));
-        var angularSpeed = calcSpeed(bar);
+        var bar = util.calcBar(this.get('tempo'));
+        var angularSpeed = util.calcSpeed(bar);
         var tempoAdjustment = this.get('tempoAdjustment');
 
         var rotateDeg = currentTime * angularSpeed - tempoAdjustment;
@@ -438,8 +439,8 @@ function(BufferLoader, LoopNodeCollection, LoopNodeModel){
 
       CueAnimation: function(){
         var loopNodes = this.get('loopNodes');
-        var bar = calcBar(this.get('tempo'));
-        var angularSpeed = calcSpeed(bar);
+        var bar = util.calcBar(this.get('tempo'));
+        var angularSpeed = util.calcSpeed(bar);
         var tempoAdjustment = this.get('tempoAdjustment');
 
         loopNodes.forEach(function(loopNode) {
@@ -517,13 +518,13 @@ function(BufferLoader, LoopNodeCollection, LoopNodeModel){
 
         // The remainder tells us how much of the bartime we have 
         // completed thus far.
-        var remainder = (currentTime - tempoAdjustment / 360 * calcBar(tempo))  % (multiplier * calcBar(tempo));
+        var remainder = (currentTime - tempoAdjustment / 360 * util.calcBar(tempo))  % (multiplier * util.calcBar(tempo));
         console.log('currentTime:', currentTime);
 
         // The delay calculates how much we'll have to delay
         // the playing of the sound so that we can perfectly
         // match the time of the next beat.
-        var delay = multiplier * calcBar(tempo) - remainder;
+        var delay = multiplier * util.calcBar(tempo) - remainder;
         console.log('delay: ', delay);
 
         console.log('expected time of play: ', delay + currentTime);
