@@ -1,6 +1,8 @@
-(function(window){
+define([
+], 
+function(){ 
 
-  var WORKER_PATH = 'src/recorderWorker.js';
+  var WORKER_PATH = 'src/utilities/recorderWorker.js';
 
   var Recorder = function(source, cfg, track){
     var config = cfg || {};
@@ -71,7 +73,7 @@
   	//Mp3 conversion
     worker.onmessage = function(e){
       // We move this here to allow multiple mp3 conversion to be allowed at the same time.
-      var encoderWorker = new Worker('src/mp3Worker.js');
+      var encoderWorker = new Worker('src/utilities/mp3Worker.js');
       var portNum = e.data.portNum;
       var blob = e.data.audioBlob;
 	  
@@ -203,18 +205,6 @@
     this.node.connect(this.context.destination);    //this should not be necessary
   };
 
-  // Force download for later. 
-  /*Recorder.forceDownload = function(blob, filename){
-	console.log("Force download");
-    var url = (window.URL || window.webkitURL).createObjectURL(blob);
-    var link = window.document.createElement('a');
-    link.href = url;
-    link.download = filename || 'output.wav';
-    var click = document.createEvent("Event");
-    click.initEvent("click", true, true);
-    link.dispatchEvent(click);
-  }*/
+  return Recorder;
 
-  window.Recorder = Recorder;
-
-})(window);
+});
