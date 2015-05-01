@@ -5,7 +5,8 @@ require.config({
     templates: '../templates',
     base64Binary:'base64-binary',
     bufferLoader: 'bufferLoader',
-    utilities: 'utilities'
+    utilities: 'utilities',
+    recorder: 'recordmp3'
   }
 });
 

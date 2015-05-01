@@ -1,4 +1,6 @@
-(function(window){
+define([
+], 
+function(){ 
 
   var WORKER_PATH = 'src/recorderWorker.js';
 
@@ -203,18 +205,6 @@
     this.node.connect(this.context.destination);    //this should not be necessary
   };
 
-  // Force download for later. 
-  /*Recorder.forceDownload = function(blob, filename){
-	console.log("Force download");
-    var url = (window.URL || window.webkitURL).createObjectURL(blob);
-    var link = window.document.createElement('a');
-    link.href = url;
-    link.download = filename || 'output.wav';
-    var click = document.createEvent("Event");
-    click.initEvent("click", true, true);
-    link.dispatchEvent(click);
-  }*/
+  return Recorder;
 
-  window.Recorder = Recorder;
-
-})(window);
+});
