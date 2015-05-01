@@ -30,7 +30,6 @@ define([
         type: 'GET',
         url: '/tracks',
         success: function(d) {
-          debugger;
           for (var i = 0; i < d.length; i++) {
             var trackInfo = {};
             var dateCreated = new Date(d[0].createdAt).toString().split(' ');
