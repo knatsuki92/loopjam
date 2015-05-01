@@ -2,7 +2,9 @@ require.config({
   baseUrl: './src', 
   paths: {
     text: '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min',
-    templates: '../templates'
+    templates: '../templates',
+    base64Binary:'base64-binary',
+    bufferLoader: 'bufferLoader'
   }
 });
 

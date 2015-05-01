@@ -1,8 +1,9 @@
 define([
+ 'bufferLoader',
  'Collections/LoopNodeCollection',
  'Models/LoopNodeModel'
 ], 
-function(LoopNodeCollection, LoopNodeModel){ 
+function(BufferLoader, LoopNodeCollection, LoopNodeModel){ 
   var TrackModel = Backbone.Model.extend({
       defaults: {
       context: null,
